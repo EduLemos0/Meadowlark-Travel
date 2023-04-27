@@ -4,6 +4,10 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+/** Routes */
+
+/** Middlewares */
+
 // customized 404 page
 app.use((req, res) => {
   res.type("text/plain");
@@ -18,4 +22,6 @@ app.use((req, res) => {
   res.send("500 - Server Error");
 });
 
-app.listen(port, () => console.log(`Server running on port ${port} ; `));
+app.listen(port, () =>
+  console.log(`Express running on port ${port}; Press Ctrl-C to terminate.....`)
+);
