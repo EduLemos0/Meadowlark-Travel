@@ -1,6 +1,10 @@
-const express = require("express");
-const { engine } = require("express-handlebars");
-const fortune = require("./lib/fortune");
+import express from "express";
+import { engine } from "express-handlebars";
+import { getFortune } from "./lib/fortune.js";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 
@@ -17,7 +21,7 @@ const port = process.env.PORT || 8080;
 app.get("/", (req, res) => res.render("home"));
 
 app.get("/about", (req, res) => {
-  res.render("about", { fortune: fortune.getFortune() });
+  res.render("about", { fortune: getFortune() });
 });
 
 /** Middlewares */
