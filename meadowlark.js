@@ -1,5 +1,6 @@
 const express = require("express");
-const { engine, create } = require("express-handlebars");
+const { engine } = require("express-handlebars");
+const fortune = require("./lib/fortune");
 
 const app = express();
 
@@ -7,13 +8,17 @@ const app = express();
 app.engine("handlebars", engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(express.static(__dirname + "/public"));
+
 const port = process.env.PORT || 8080;
 
 /** Routes */
 
 app.get("/", (req, res) => res.render("home"));
 
-app.get("/about", (req, res) => res.render("about"));
+app.get("/about", (req, res) => {
+  res.render("about", { fortune: fortune.getFortune() });
+});
 
 /** Middlewares */
 
