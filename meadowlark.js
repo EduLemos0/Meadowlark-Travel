@@ -1,5 +1,5 @@
 const express = require("express");
-const { engine } = require("express-handlebars");
+const { engine, create } = require("express-handlebars");
 
 const app = express();
 
@@ -11,9 +11,9 @@ const port = process.env.PORT || 8080;
 
 /** Routes */
 
-app.get("/", (req, res) => res.render("home.hbs"));
+app.get("/", (req, res) => res.render("home"));
 
-app.get("/about", (req, res) => res.render("./views/about"));
+app.get("/about", (req, res) => res.render("about"));
 
 /** Middlewares */
 
