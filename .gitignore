@@ -1,3 +1,4 @@
 # ignora os pactores instalados pelo npm
+yarn.lock
 node_modules
 
